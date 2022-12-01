@@ -48,18 +48,42 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.3/css/bootstrap.css' integrity='sha512-bR79Bg78Wmn33N5nvkEyg66hNg+xF/Q8NA8YABbj+4sBngYhv9P8eum19hdjYcY7vXk/vRkhM3v/ZndtgEXRWw==' crossorigin='anonymous'/>
+
   <title>Hotel</title>
 </head>
 <body>
-  
-  <ul>
-    <?php
-      foreach($hotels as $key => $value){
-        foreach($value as $hotel => $value_hotel){
-          echo "<li>$hotel: $value_hotel</li>";
-        }
-      }
-    ?>
-  </ul>
+
+<div class="container">
+  <div class="row">
+    <div class="col-8 offset-2">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Nome</th>
+            <th scope="col">Descrizione</th>
+            <th scope="col">Parcheggio</th>
+            <th scope="col">Stile</th>
+            <th scope="col">Distanza dal centro</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <?php
+            foreach($hotels as $key => $value){
+              echo "<tr>";
+              foreach($value as $hotel => $value_hotel){
+                echo "<td>$value_hotel</td>";
+              }
+              echo "</tr>";
+            }
+          ?>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
 </body>
 </html>
