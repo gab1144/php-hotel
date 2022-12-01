@@ -40,6 +40,7 @@
 
     ];
 
+    $data = $_GET;
 ?>
 
 <!DOCTYPE html>
@@ -56,6 +57,38 @@
 <body>
 
 <div class="container">
+
+  <div class="row">
+    <div class="col">
+      <form action="./index.php" method="GET" class="d-flex">
+        
+      <div class="form-check">
+          <input class="form-check-input" type="radio" name="parking" id="no-parking" value="0">
+          <label class="form-check-label" for="no-parking">
+            Senza parcheggio
+          </label>
+        </div>
+        
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="parking" id="with-parking" value="1" checked>
+          <label class="form-check-label" for="with-parking">
+            Con parcheggio
+          </label>
+        </div>
+        
+        <div class="mb-3">
+          <input name="stars" type="number" min="0" max="5">
+        </div>
+
+        <div class="mb-3 d-flex">
+          <button class="btn btn-primary" type="submit">Cerca</button>
+          <button class="btn btn-secondary" type="reset">Annulla</button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+
   <div class="row">
     <div class="col-8 offset-2">
       <table class="table table-striped">
@@ -64,7 +97,7 @@
             <th scope="col">Nome</th>
             <th scope="col">Descrizione</th>
             <th scope="col">Parcheggio</th>
-            <th scope="col">Stile</th>
+            <th scope="col">Stelle</th>
             <th scope="col">Distanza dal centro</th>
           </tr>
         </thead>
@@ -72,11 +105,22 @@
         <tbody>
           <?php
             foreach($hotels as $key => $value){
-              echo "<tr>";
-              foreach($value as $hotel => $value_hotel){
-                echo "<td>$value_hotel</td>";
+              if(($data['parking'] == $value['parking']) || empty($data)){
+                
+                echo "<tr>";
+                foreach($value as $key_hotel => $value_hotel){
+                  if($key_hotel == 'parking'){
+                    if($value_hotel == "true"){
+                      echo "<td>Sì</td>";
+                    } else {
+                      echo "<td>No</td>";
+                    }
+                  } else {
+                    echo "<td>$value_hotel</td>";
+                  }
+                }
+                echo "</tr>";
               }
-              echo "</tr>";
             }
           ?>
         </tbody>
