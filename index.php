@@ -41,6 +41,7 @@
     ];
 
     $data = $_GET;
+    var_dump($data);
 ?>
 
 <!DOCTYPE html>
@@ -77,7 +78,7 @@
         </div>
         
         <div class="mb-3">
-          <input name="stars" type="number" min="0" max="5">
+          <input name="stars" type="number" min="1" max="5">
         </div>
 
         <div class="mb-3 d-flex">
@@ -105,7 +106,7 @@
         <tbody>
           <?php
             foreach($hotels as $key => $value){
-              if(($data['parking'] == $value['parking'] && $data['stars']==NULL ) || ($data['stars'] == strval($value['vote']) && $data['parking'] == $value['parking']) || ($data['stars'] == strval($value['vote']) && $data['parking'] == NULL) ||empty($data)){
+              if(($data['parking'] == $value['parking'] && $data['stars']==NULL ) || ($value['vote'] >= (int)$data['stars'] && $data['parking'] == $value['parking']) || ($value['vote'] >= (int)$data['stars'] && $data['parking'] == NULL) ||empty($data)){
                 
                 echo "<tr>";
                 foreach($value as $key_hotel => $value_hotel){
