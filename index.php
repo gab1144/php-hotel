@@ -70,7 +70,7 @@
         </div>
         
         <div class="form-check">
-          <input class="form-check-input" type="radio" name="parking" id="with-parking" value="1" checked>
+          <input class="form-check-input" type="radio" name="parking" id="with-parking" value="1">
           <label class="form-check-label" for="with-parking">
             Con parcheggio
           </label>
@@ -105,12 +105,12 @@
         <tbody>
           <?php
             foreach($hotels as $key => $value){
-              if(($data['parking'] == $value['parking']) || empty($data)){
+              if(($data['parking'] == $value['parking'] && $data['stars']==NULL ) || ($data['stars'] == strval($value['vote']) && $data['parking'] == $value['parking']) || ($data['stars'] == strval($value['vote']) && $data['parking'] == NULL) ||empty($data)){
                 
                 echo "<tr>";
                 foreach($value as $key_hotel => $value_hotel){
                   if($key_hotel == 'parking'){
-                    if($value_hotel == "true"){
+                    if($value_hotel){
                       echo "<td>Sì</td>";
                     } else {
                       echo "<td>No</td>";
