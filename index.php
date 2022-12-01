@@ -41,7 +41,6 @@
     ];
 
     $data = $_GET;
-    var_dump($data);
 ?>
 
 <!DOCTYPE html>
@@ -63,26 +62,29 @@
     <div class="col">
       <form action="./index.php" method="GET" class="d-flex">
         
-      <div class="form-check">
+      <div class="form-check p-2  pe-5">
           <input class="form-check-input" type="radio" name="parking" id="no-parking" value="0">
           <label class="form-check-label" for="no-parking">
             Senza parcheggio
           </label>
         </div>
         
-        <div class="form-check">
+        <div class="form-check  p-2">
           <input class="form-check-input" type="radio" name="parking" id="with-parking" value="1">
           <label class="form-check-label" for="with-parking">
             Con parcheggio
           </label>
         </div>
         
-        <div class="mb-3">
+        <div class="mb-3  p-2">
+          <label for="stars">
+            Voto: 
+          </label>
           <input name="stars" type="number" min="1" max="5">
         </div>
 
-        <div class="mb-3 d-flex">
-          <button class="btn btn-primary" type="submit">Cerca</button>
+        <div class="mb-3 d-flex p-2">
+          <button class="btn btn-primary me-5" type="submit">Cerca</button>
           <button class="btn btn-secondary" type="reset">Annulla</button>
         </div>
 
